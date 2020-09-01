@@ -1,2 +1,11 @@
 # Servidor Web Multithreaded
-Trabalho em desenvolvimento para a disciplina de Redes de Computadores.
+Trabalho desenvolvido para a disciplina de Redes de Computadores.
+
+## Intruções para execução:
+Para executar por alguma IDE
+- localhost:7813/src/index.html
+
+Se for compilar e executar pelo terminal
+- javac WebServer.java
+- java WebServer
+- localhost:7813/index.html
