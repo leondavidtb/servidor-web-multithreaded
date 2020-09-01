@@ -9,10 +9,10 @@ public final class WebServer {
 		
 		ServerSocket server = new ServerSocket(port);
 		
-		System.out.println("\nEsperando conexão...");
+		System.out.println("\nEsperando conexÃ£o...");
 		while (true) {
 			Socket client = server.accept();
-			System.out.println("\nConexão requisitada, enviando para tratamento...");
+			System.out.println("\nConexÃ£o requisitada, enviando para tratamento...");
 			HttpRequest request = new HttpRequest(client);
 			Thread thread = new Thread(request);
 			System.out.println("\nSocket aceito, inicializando thread");
@@ -79,7 +79,7 @@ final class HttpRequest implements Runnable {
 		String contentTypeLine = null;
 		String entityBody = null;
 		
-		System.out.println("\nVerificando existência de arquivo...");
+		System.out.println("\nVerificando existÃªncia de arquivo...");
 		if (fileExists) {
 			System.out.println("\nArquivo existente, criando response 200");
 			statusLine = "HTTP/1.1 200 OK" + CRLF;
@@ -104,13 +104,13 @@ final class HttpRequest implements Runnable {
 		}
 		
 		System.out.println("\nResponse enviada com sucesso!");
-		System.out.println("\nPreparando para finalizar comuniação...");
+		System.out.println("\nPreparando para finalizar comunicaÃ§Ã£o...");
 		
 		os.close();
 		br.close();
 		socket.close();
 		
-		System.out.println("\nComunicação finalizada com sucesso!");
+		System.out.println("\nComunicaÃ§Ã£o finalizada com sucesso!");
 	}
 
 	private void sendBytes(FileInputStream fis, DataOutputStream os) throws IOException {
@@ -125,7 +125,7 @@ final class HttpRequest implements Runnable {
 
 	private static String contentType(String fileName) {
 		if (fileName.endsWith(".htm") || fileName.endsWith(".html")) {
-			System.out.println("\n(Arquivo à ser enviado é um HTML)");
+			System.out.println("\n(Arquivo a ser enviado Ã© um HTML)");
 			return "text/html";
 		}
 		
