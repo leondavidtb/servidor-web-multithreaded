@@ -4,20 +4,28 @@ import java.util.*;
 
 public final class WebServer {
 	public static void main(String[] args) throws Exception {
+
 		System.out.println("\nInicializando main");
 		int port = 7813;
 		
 		ServerSocket server = new ServerSocket(port);
 		
 		System.out.println("\nEsperando conexão...");
-		while (true) {
-			Socket client = server.accept();
-			System.out.println("\nConexão requisitada, enviando para tratamento...");
-			HttpRequest request = new HttpRequest(client);
-			Thread thread = new Thread(request);
-			System.out.println("\nSocket aceito, inicializando thread");
-			thread.start();
-		}
+
+		try {
+			while (true) {
+				Socket client = server.accept();
+				System.out.println("\nConexão requisitada, enviando para tratamento...");
+				HttpRequest request = new HttpRequest(client);
+				Thread thread = new Thread(request);
+				System.out.println("\nSocket aceito, inicializando thread");
+				thread.start();
+			}
+		} finally {
+			if (server != null) {
+				server.close();
+			}
+		}		
 	}
 }
 
@@ -40,7 +48,6 @@ final class HttpRequest implements Runnable {
 	}
 
 	private void processRequest() throws Exception {
-		InputStream is = socket.getInputStream();
 		DataOutputStream os = new DataOutputStream(socket.getOutputStream());
 		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		
