@@ -5,9 +5,9 @@ Linguagem utilizada: JAVA
 
 ## Intruções para execução:
 Para executar por alguma IDE
-- localhost:7813/src/index.html
+- localhost:9010/src/index.html
 
 Se for compilar e executar pelo terminal
 - javac WebServer.java
 - java WebServer
-- localhost:7813/index.html
+- localhost:9010/index.html
