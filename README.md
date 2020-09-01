@@ -1,8 +1,7 @@
 # Servidor Web Multithreaded
 Trabalho desenvolvido para a disciplina de Redes de Computadores.
 
-Linguagem utilizada: JAVA
-Versão: 1.8
+Linguagem utilizada: JAVA versão: 1.8
 
 ## Intruções para execução:
 Para executar por alguma IDE
