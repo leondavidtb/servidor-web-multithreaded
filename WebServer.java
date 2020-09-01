@@ -58,6 +58,7 @@ final class HttpRequest implements Runnable {
 		System.out.println("\nDataOutputStream: " + os + " BufferedReader: " + br + " Request Line: " + requestLine);
 		System.out.println("\nHeaders:");
 		System.out.println("=========================================================");
+		System.out.println(requestLine);
 		while ((headerLine = br.readLine()).length() != 0) {
 			System.out.println(headerLine);
 		}
