@@ -1,6 +1,9 @@
 # Servidor Web Multithreaded
 Trabalho desenvolvido para a disciplina de Redes de Computadores.
 
+Linguagem utilizada: JAVA
+Versão: 1.8
+
 ## Intruções para execução:
 Para executar por alguma IDE
 - localhost:7813/src/index.html
