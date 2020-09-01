@@ -6,16 +6,16 @@ public final class WebServer {
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("\nInicializando main");
-		int port = 7813;
+		int port = 9010;
 		
 		ServerSocket server = new ServerSocket(port);
 		
-		System.out.println("\nEsperando conexão...");
+		System.out.println("\nEsperando conexao...");
 
 		try {
 			while (true) {
 				Socket client = server.accept();
-				System.out.println("\nConexão requisitada, enviando para tratamento...");
+				System.out.println("\nConexao requisitada, enviando para tratamento...");
 				HttpRequest request = new HttpRequest(client);
 				Thread thread = new Thread(request);
 				System.out.println("\nSocket aceito, inicializando thread");
@@ -86,14 +86,14 @@ final class HttpRequest implements Runnable {
 		String contentTypeLine = null;
 		String entityBody = null;
 		
-		System.out.println("\nVerificando existência de arquivo...");
+		System.out.println("\nVerificando existencia de arquivo...");
 		if (fileExists) {
 			System.out.println("\nArquivo existente, criando response 200");
-			statusLine = "HTTP/1.1 200 OK" + CRLF;
+			statusLine = "HTTP/1.0 200 OK" + CRLF;
 			contentTypeLine = "Content-type:" + contentType(fileFromPath) + CRLF;
 		} else {
 			System.out.println("\nArquivo inexistente, criando response 404");
-			statusLine = "HTTP/1.1 404 Not Found";
+			statusLine = "HTTP/1.0 404 Not Found";
 			contentTypeLine = "Content-type:" + contentType(fileFromPath) + CRLF;
 			entityBody = "<HTML>" + "<HEAD><TITLE>Not Found</TITLE></HEAD>" + "<BODY>Not Found</BODY></BODY>";
 		}
@@ -111,13 +111,13 @@ final class HttpRequest implements Runnable {
 		}
 		
 		System.out.println("\nResponse enviada com sucesso!");
-		System.out.println("\nPreparando para finalizar comunicação...");
+		System.out.println("\nPreparando para finalizar comunicacao...");
 		
 		os.close();
 		br.close();
 		socket.close();
 		
-		System.out.println("\nComunicação finalizada com sucesso!");
+		System.out.println("\nComunicacao finalizada com sucesso!");
 	}
 
 	private void sendBytes(FileInputStream fis, DataOutputStream os) throws IOException {
@@ -132,7 +132,7 @@ final class HttpRequest implements Runnable {
 
 	private static String contentType(String fileName) {
 		if (fileName.endsWith(".htm") || fileName.endsWith(".html")) {
-			System.out.println("\n(Arquivo a ser enviado é um HTML)");
+			System.out.println("\n(Arquivo a ser enviado e um HTML)");
 			return "text/html";
 		}
 		
